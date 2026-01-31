@@ -1,0 +1,190 @@
+:root {
+    --main-color: #00bcd4;
+    --secondary-color: #ff4081;
+    --bg-color: #0d0d0d;
+    --card-bg-color: #1a1a1a; 
+    --text-color: #e0e0e0; 
+    --border-color: #333; 
+    --glow-color: rgba(0, 188, 212, 0.4); 
+    --dark-glow-color: rgba(255, 64, 129, 0.3);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Background styles moved to background/background.css */
+/* See: background/background.css */
+
+/* Основной контейнер */
+.container {
+    max-width: 980px;
+    margin: 280px auto 60px; /* Увеличили маржин, чтобы герой стоял выше */
+    padding: 20px 30px 30px; 
+    background: rgba(26, 26, 26, 0.9);
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Убрали внешнее синее свечение контейнера для чистоты */
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Кнопки переключения языков */
+.language-switch {
+    position: fixed; /* keep it at viewport top-right */
+    top: 14px;
+    right: 18px;
+    display: flex;
+    gap: 10px;
+    z-index: 10050;
+}
+
+.lang-btn {
+    background: var(--card-bg-color);
+    border: 1px solid var(--main-color);
+    color: var(--text-color);
+    padding: 8px 15px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.lang-btn.active {
+    background: var(--main-color);
+    color: white;
+}
+
+.profile-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Avatar styles moved to avatar/avatar.css */
+
+/* Сетка кнопок соцсетей — 2 элемента в колонке, выровнено по центру */
+.social-grid {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 140px;
+    grid-template-rows: repeat(2, auto); /* 2 items per column */
+    column-gap: 12px;
+    row-gap: 12px;
+    margin: 18px auto;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    max-width: 840px;
+}
+
+@media (max-width: 600px) {
+    .social-grid {
+        grid-auto-flow: row;
+        grid-template-rows: none;
+        grid-auto-columns: auto;
+        grid-template-columns: 1fr;
+        max-width: none;
+        gap: 10px;
+    }
+    .social-btn { width: 100%; }
+} 
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    background: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: 0.3s;
+    font-weight: 600;
+    width: 140px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.social-btn i { margin-right: 10px; }
+
+.social-btn:hover {
+    transform: translateY(-4px);
+    border-color: var(--main-color);
+}
+
+/* Contact button: match social button style */
+.email-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 14px;
+    background: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: 0.3s;
+    font-weight: 700;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.25) inset;
+}
+.email-btn:hover { transform: translateY(-4px); border-color: var(--main-color); color: white; }
+
+/* Мобильная адаптация */
+@media (max-width: 900px) {
+    .container { margin: 160px auto 20px; padding: 14px 16px; }
+    .social-btn, .email-btn { padding: 12px 14px; font-size: 15px; }
+    .projects-section, .gallery-section { margin: 20px 10px; padding: 12px; }
+}
+
+@media (max-width: 600px) {
+    .container { margin-top: 220px; }
+    .language-switch { top: 10px; right: 12px; }
+    .social-btn, .email-btn { padding: 14px 16px; font-size: 16px; }
+    /* Avatar responsive rules moved to avatar/avatar.css */
+} 
+
+/* Custom cursor styles (dot with orbiting dots for interactive elements) */
+#custom-cursor { position: fixed; left: 0; top: 0; width: 48px; height: 48px; transform: translate(-50%,-50%); pointer-events: none; z-index: 4000; display: block; transition: opacity 160ms ease, transform 120ms linear; opacity: 1; }
+#custom-cursor .core { position: absolute; left: 50%; top: 50%; width: 6px; height: 6px; background: #fff; border-radius: 50%; transform: translate(-50%,-50%); box-shadow: 0 0 8px rgba(255,255,255,0.9); transition: transform 160ms ease, box-shadow 160ms ease; }
+#custom-cursor .orbit { position: absolute; left: 50%; top: 50%; width: 36px; height: 36px; transform: translate(-50%,-50%); pointer-events: none; }
+/* smaller dots close to core, 8 dots evenly spaced */
+#custom-cursor .orbit-dot { position: absolute; left: 50%; top: 50%; width: 4px; height: 4px; background: #fff; border-radius: 50%; transform-origin: 0 -12px; animation: orbit 1.0s linear infinite; animation-play-state: paused; opacity: 0; transform: scale(0.6); transition: opacity 160ms ease, transform 160ms ease; }
+#custom-cursor .orbit-dot:nth-child(1){ transform: rotate(0deg) translateX(12px) scale(0.6); }
+#custom-cursor .orbit-dot:nth-child(2){ transform: rotate(45deg) translateX(12px) scale(0.6); animation-delay: -0.06s; }
+#custom-cursor .orbit-dot:nth-child(3){ transform: rotate(90deg) translateX(12px) scale(0.6); animation-delay: -0.12s; }
+#custom-cursor .orbit-dot:nth-child(4){ transform: rotate(135deg) translateX(12px) scale(0.6); animation-delay: -0.18s; }
+#custom-cursor .orbit-dot:nth-child(5){ transform: rotate(180deg) translateX(12px) scale(0.6); animation-delay: -0.24s; }
+#custom-cursor .orbit-dot:nth-child(6){ transform: rotate(225deg) translateX(12px) scale(0.6); animation-delay: -0.30s; }
+#custom-cursor .orbit-dot:nth-child(7){ transform: rotate(270deg) translateX(12px) scale(0.6); animation-delay: -0.36s; }
+#custom-cursor .orbit-dot:nth-child(8){ transform: rotate(315deg) translateX(12px) scale(0.6); animation-delay: -0.42s; }
+#custom-cursor.active .orbit-dot { animation-play-state: running; opacity: 0.95; transform: scale(1); }
+#custom-cursor.active .core { transform: translate(-50%,-50%) scale(1.15); box-shadow: 0 0 12px rgba(255,255,255,1); }
+@keyframes orbit { from { transform: rotate(0deg) translateX(12px) rotate(0deg); } to { transform: rotate(360deg) translateX(12px) rotate(-360deg); } }
+
+/* Hide native cursor on non-touch devices (JS toggles body class on init) */
+.hide-native-cursor, .hide-native-cursor * { cursor: none !important; }
+
+/* projects styles moved to sections/projects/projects.css */
+/* See: sections/projects/projects.css */

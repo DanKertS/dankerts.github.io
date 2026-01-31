@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dankert | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="background/background.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sections/projects/projects.css">
+    <link rel="stylesheet" href="sections/gallery/gallery.css">
+    <link rel="icon" href="avatar/hero.png">
+    <link rel="apple-touch-icon" href="avatar/hero.png">
+    <link rel="stylesheet" href="avatar/avatar.css">
+</head>
+<body>
+    <div class="background-overlay"></div>
+    <div class="grain-overlay" aria-hidden="true"></div>
+    <div id="word-swarm" class="word-swarm" aria-hidden="true"></div>
+    
+    <div class="container">
+        <div class="language-switch">
+            <button id="lang-toggle" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+
+        <section class="profile-section">
+            <div class="hero-wrapper">
+                <div class="profile-image-wrapper">
+                    <img src="avatar/hero.png" alt="Dan Kert" class="profile-image">                </div>
+                <div class="floating-icons">
+                    <i class="fab fa-python tech-icon py" title="Python"></i>
+                    <i class="fab fa-linux tech-icon lin" title="Linux"></i>
+                    <i class="fab fa-java tech-icon jv" title="Java"></i>
+                    <i class="fas fa-code tech-icon script" title="Scripts"></i>
+                </div>
+            </div>
+
+            <h1 class="profile-name" id="profile-name">DanKert</h1>
+            <p class="profile-tagline" id="profile-tagline">Крутой профессиональный разработчик</p>
+            
+            <div class="social-grid" id="social-links-grid"></div>
+
+            <a href="mailto:dan.kert.official@gmail.com" class="email-btn" id="contact-btn">
+                <i class="fas fa-envelope" style="margin-right: 10px;"></i>
+                Связаться со мной
+            </a>
+        </section> 
+    </div>
+
+    <section class="projects-section" id="projects-section">
+        <h2 id="projects-title">Мои проекты</h2>
+        <div class="projects-grid" id="projects-grid"></div>
+    </section>
+
+    <section class="gallery-section" id="gallery-section">
+        <h2 id="gallery-title">Крутая Галерея</h2>
+        <div class="gallery-grid" id="gallery-grid"></div>
+
+        <!-- Lightbox modal -->
+        <div id="gallery-modal" class="gallery-modal" aria-hidden="true">
+            <button class="gallery-close" aria-label="Close">&times;</button>
+            <button class="gallery-prev" aria-label="Previous">&#10094;</button>
+            <div class="gallery-media-wrap"><div id="gallery-media"></div></div>
+            <button class="gallery-next" aria-label="Next">&#10095;</button>
+            <div class="gallery-caption" id="gallery-caption"></div>
+        </div>
+    </section>
+
+    <script src="sections/gallery/gallery.js"></script>
+
+    <script src="avatar/words.js"></script>
+    <script src="script.js"></script>
+    <script src="sections/projects/projects.js"></script>
+    <script src="avatar/avatar.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+/* Avatar and floating icons (moved from style.css) */
+
+.hero-wrapper {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    /* Отрицательный маржин выносит его наверх, положительный снизу дает место нику */
+    margin: -265px auto 20px; 
+    z-index: 10;
+}
+
+.profile-image-wrapper {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    overflow: visible;
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* ПОДСВЕТКА УБРАНА ЗДЕСЬ (filter: none) */
+    filter: none; 
+}
+
+.floating-icons { /* container for floating tech icons overlay */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* allow interactions to pass through; icons will re-enable pointer-events */
+}
+
+/* Иконки технологий */
+.tech-icon {
+    position: absolute;
+    font-size: 2.2rem;
+    z-index: 20;
+    animation: floatAnim 4s ease-in-out infinite;
+    pointer-events: auto; /* re-enable pointer events for icons if needed */
+
+    /* CSS vars used by JS to add parallax offsets */
+    --px: 0px;
+    --py: 0px;
+
+    /* Smooth visual response when vars change; lerp in JS handles most smoothing */
+    transition: transform 260ms cubic-bezier(.16,1,.3,1);
+    will-change: transform;
+}
+
+.py { top: 0%; left: -10%; color: #3776ab; }
+.lin { bottom: 15%; left: -15%; color: #fcc624; animation-delay: 1s; }
+.jv { top: 0%; right: -10%; color: #f8981d; animation-delay: 2s; }
+.script { bottom: 15%; right: -15%; color: var(--secondary-color); animation-delay: 3s; }
+
+@keyframes floatAnim {
+    0%, 100% { transform: translate(var(--px), var(--py)) translateY(0) rotate(0deg); }
+    /* чуть увеличенная амплитуда bobbing */
+    50% { transform: translate(var(--px), var(--py)) translateY(-20px) rotate(6deg); }
+} 
+
+/* Имя пользователя */
+.profile-name {
+    font-size: 2.8em;
+    margin: 0 0 5px; 
+    color: var(--main-color);
+    /* Здесь можно оставить легкую тень текста для читаемости */
+    text-shadow: 0 0 10px rgba(0, 188, 212, 0.3);
+}
+
+.profile-tagline {
+    font-size: 1.1em;
+    color: #a0a0a0;
+    margin-bottom: 30px;
+}
+
+/* Мобильная адаптация для аватара */
+@media (max-width: 900px) {
+    .floating-icons { display: none; }
+    .hero-wrapper { width: 200px; height: 200px; margin-top: -220px; }
+    .profile-name { font-size: 2.2em; }
+    .profile-tagline { font-size: 1.0em; }
+}
+@media (max-width: 600px) {
+    .hero-wrapper { width: 160px; height: 160px; margin-top: -180px; }
+    .profile-name { font-size: 1.8em; }
+    .profile-tagline { font-size: 0.98em; margin-bottom: 18px; }
+} 

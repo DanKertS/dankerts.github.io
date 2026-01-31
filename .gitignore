@@ -1,0 +1,11 @@
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+scripts/__pycache__/
+sections/gallery/__pycache__/
+sections/gallery/gallery.cssc
+sections/gallery/gallery.htmlc
+sections/gallery/gallery.jsc
+sections/gallery/gallery.jsonc
+scripts
